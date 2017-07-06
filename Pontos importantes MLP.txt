@@ -1,0 +1,20 @@
+- funções lambda
+http://php.net/manual/pt_BR/functions.anonymous.php
+
+- Currying (Embarcações)
+
+https://zaemis.blogspot.com.br/2009/06/currying-in-php.html
+
+- Pattern Matching
+Não existe pattern matching no PHP
+	
+- Funções de alta ordem 
+	aquelas que manipulam/operam sobre outras funções
+	aceitam outras funções como argumentos; e/ou retornam outras funções como resultado
+
+- Usar Map, Reduce, Foldr/foldl
+Usar reduce para verificar o término do jogo
+
+- Especificar e usar funções como elementos de 1º ordem
+
+- Usar recursão como mecanismo de iteração
