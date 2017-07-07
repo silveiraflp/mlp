@@ -9,8 +9,8 @@ define("TARGET"             , 1);
 define("ALREADY_CLICKED"   , 2);
 
 /** 
-** Inicialização do tabuleiro funcional 
-** Completa item de "Usar recursão como iteração"
+** Inicializaï¿½ï¿½o do tabuleiro funcional 
+** Completa item de "Usar recursï¿½o como iteraï¿½ï¿½o"
 **/
 
 function inicializar_tabuleiro($dimensao){
@@ -50,7 +50,12 @@ function jogo(){
     return !isset($_SESSION['jogo']) ? $_SESSION['jogo'] = iniciar_jogo(TAMANHO_TABULEIRO) : $_SESSION['jogo'];
 };
 
-
-print_r(jogo());
+$tabuleiro = jogo();
+for($i = 0; $i < TAMANHO_TABULEIRO; $i++){
+    for($j = 0; $j < TAMANHO_TABULEIRO; $j++){
+        echo $tabuleiro[$i][$j]+ " ";
+    }
+    echo "<br>";
+}
 
 die();

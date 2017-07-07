@@ -1,9 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     define("TAMANHO_TABULEIRO"  , 15);
-    define("TAMANHO_GRID"       , 45); // número de pixes
+    define("TAMANHO_GRID"       , 45); // nï¿½mero de pixes
     define("QTD_NAVIOS"         , 3);
     define("QTD_SUBMARINOS"     , 4);
     define("QTD_MINAS"          , 5);
@@ -45,7 +45,7 @@ error_reporting(E_ALL);
 
 <table class='tblInfo'>
     <tr>
-        <th>Embarcações em Jogo: </th>
+        <th>Embarcaï¿½ï¿½es em Jogo: </th>
         <td style='' id='qtdEmbarcacoesEmJogo'></td>
     </tr>
 </table>
@@ -92,14 +92,14 @@ for ($i=0; $i <= (TAMANHO_TABULEIRO + 1); $i++)
             {
                 adicionaIcone(linha, coluna, "erro.png");
             }
-            else // Acertou embarcação
+            else // Acertou embarcaï¿½ï¿½o
             {
                 adicionaIcone(linha, coluna, "fire.gif");
                 setTimeout(function(){
                     adicionaIcone(linha, coluna, "acerto.png");
                 }, 500);
                 
-                if (retorno == 1) // Afundou embarcação
+                if (retorno == 1) // Afundou embarcaï¿½ï¿½o
                 {
                     verificarFim(paradigma);                    
                 }
@@ -118,7 +118,7 @@ for ($i=0; $i <= (TAMANHO_TABULEIRO + 1); $i++)
             $('#qtdEmbarcacoesEmJogo').html(qtdEmbarcacoes);
     
             if (qtdEmbarcacoes == 0)
-                alert( "Você afundou todas às embarcações! Fim de Jogo!" );
+                alert( "Vocï¿½ afundou todas ï¿½s embarcaï¿½ï¿½es! Fim de Jogo!" );
         });   
     }
     
