@@ -2,21 +2,46 @@
 //CURRYING
 define("VERTICAL", 0);
 define("HORIZONTAL", 1);
+define("TAMANHO_MINA", 1);
+define("TAMANHO_SUBMARINO", 2);
+define("TAMANHO_NAVIO", 3);
 
 function insert_embarcacao($tipo){
     return function ($tabuleiro) use($tipo){
         return function ($quantidade) use ($tipo, $tabuleiro){
             switch($tipo){
                 case "sub":
-                    for($i = 0; $i < $quantidade; $i++)
-                        echo "insert submarino<br>";
+                    $size = TAMANHO_SUBMARINO;
+                    $tabuleiro = repeat_it($quantidade, $mark_position = function($tabuleiro, $size) use (&$mark_position){
+                        $linha = RAND(0, TAMANHO_TABULEIRO-1);
+                        $coluna = RAND(0, TAMANHO_TABULEIRO-1);
+                        $orientation = RAND(0, 1);
+
+                        if(($result = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)) == 0)
+                            $tabuleiro = $mark_position($tabuleiro, $size);
+                        else
+                            $tabuleiro = $result;
+
+                        return $tabuleiro;
+                    }, $tabuleiro, $size);
                 break;
                 case "nav":
-                    for($i = 0; $i < $quantidade; $i++)
-                        echo "insert navio\n";
+                    $size = TAMANHO_NAVIO;
+                    $tabuleiro = repeat_it($quantidade, $mark_position = function($tabuleiro, $size) use (&$mark_position){
+                        $linha = RAND(0, TAMANHO_TABULEIRO-1);
+                        $coluna = RAND(0, TAMANHO_TABULEIRO-1);
+                        $orientation = RAND(0, 1);
+
+                        if(($result = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)) == 0)
+                            $tabuleiro = $mark_position($tabuleiro, $size);
+                        else
+                            $tabuleiro = $result;
+
+                        return $tabuleiro;
+                    }, $tabuleiro, $size);
                 break;
                 case "min":
-                    $size = 1;
+                    $size = TAMANHO_MINA;
                     $tabuleiro = repeat_it($quantidade, $mark_position = function($tabuleiro, $size) use (&$mark_position){
                         $linha = RAND(0, TAMANHO_TABULEIRO-1);
                         $coluna = RAND(0, TAMANHO_TABULEIRO-1);
