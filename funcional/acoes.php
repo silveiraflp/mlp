@@ -1,6 +1,8 @@
 <?php
 define("TAMANHO_TABULEIRO"  , 15);
-
+define("NO_TARGET"          , 0);
+define("TARGET"             , 1);
+define("ALREADY_CLICKED"   , 2);
 
 function count_units($carry, $value){
     if($value == 1)
@@ -29,8 +31,10 @@ if (isset($_GET['acao']))
             $linha = $_GET['linha'] - 1;
             $coluna = $_GET['coluna'] - 1;
 
-            if($jogo[$linha][$coluna] == 1)
+            if($jogo[$linha][$coluna] == TARGET){
                 $resultado += 1;
+                $jogo[$linha][$coluna] = ALREADY_CLICKED;
+            }
             
             break;
         case "verificaFim":

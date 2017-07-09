@@ -7,7 +7,7 @@
     define("QTD_NAVIOS"         , 3);
     define("QTD_SUBMARINOS"     , 4);
     define("QTD_MINAS"          , 5);
-    define("PARADIGMA"          , "funcional");
+define("PARADIGMA"          , "funcional");
     
     include PARADIGMA . '/index.php';
 ?>

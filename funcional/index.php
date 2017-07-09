@@ -9,8 +9,8 @@ define("TARGET"             , 1);
 define("ALREADY_CLICKED"   , 2);
 
 /** 
-** Inicializaï¿½ï¿½o do tabuleiro funcional 
-** Completa item de "Usar recursï¿½o como iteraï¿½ï¿½o"
+** Inicialização do tabuleiro funcional 
+** Completa item de "Usar recursão como iteração"
 **/
 
 function inicializar_tabuleiro($dimensao){
@@ -43,7 +43,7 @@ function iniciar_jogo($tamanho_tabuleiro){
 
     $tabuleiro = $insert_mina($tabuleiro)(QTD_MINAS);
     $tabuleiro = $insert_navio($tabuleiro)(QTD_NAVIOS);
-    //$tabuleiro = $insert_submarino($tabuleiro)(QTD_SUBMARINOS);
+    $tabuleiro = $insert_submarino($tabuleiro)(QTD_SUBMARINOS);
 
     return $tabuleiro;
 };

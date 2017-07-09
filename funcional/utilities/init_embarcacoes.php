@@ -85,51 +85,69 @@ function repeat_it($times, $my_function, $tabuleiro, $size){
 //     return $tabuleiro;
 // };
 
+function no_bounds($tabuleiro, $linha, $coluna){
+
+    //echo "Linha: $linha Coluna: $coluna <br>";
+    $result = checkline($tabuleiro, $linha, $coluna, -1);
+    //echo "<br><br>";
+
+    return $result;
+}
+
+function checkline($tabuleiro, $linha, $coluna, $index){
+    if($index != 1){
+        if($result = checkline($tabuleiro, $linha, $coluna, $index+1))
+            $result = checkcol($tabuleiro, $linha+$index, $coluna, -1);
+    }
+    else{
+        $result = checkcol($tabuleiro, $linha+$index, $coluna, -1);
+    }
+
+    //echo $result;
+    return $result;
+}
+
+function checkcol($tabuleiro, $linha, $coluna, $index){
+    if($index != 1){
+        if(checkcol($tabuleiro, $linha, $coluna, $index+1) == 0){
+            return 0;
+        }
+    }
+
+    if((0 <= $linha && $linha <= TAMANHO_TABULEIRO) && (0 <= $coluna+$index && $coluna+$index <= TAMANHO_TABULEIRO)){
+        if($tabuleiro[$linha][$coluna+$index] == NO_TARGET)
+            return 1;
+        else
+            return 0;
+    }
+    else{
+        return 1;
+    }
+}
+
 function follow($tabuleiro, $orientation, $size, $linha, $coluna){
     if($orientation == VERTICAL){
         if($linha+$size < TAMANHO_TABULEIRO){
-            if($tabuleiro[$linha+$size][$coluna] == NO_TARGET)
+            if(no_bounds($tabuleiro, $linha+$size, $coluna))
                 if($size == 0){
                     $tabuleiro[$linha+$size][$coluna] = TARGET;
                     return $tabuleiro;
                 }
                 else if($tabuleiro = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)){
                     $tabuleiro[$linha+$size][$coluna] = TARGET;
-                    return $tabuleiro;
-                }
-        }
-        else if($linha-$size >= 0){
-            if($tabuleiro[$linha-$size][$coluna] == NO_TARGET)
-                if($size == 0){
-                    $tabuleiro[$linha-$size][$coluna] = TARGET;
-                    return $tabuleiro;
-                }
-                else if($tabuleiro = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)){
-                    $tabuleiro[$linha-$size][$coluna] = TARGET;
                     return $tabuleiro;
                 }
         }
     }
     else if($orientation == HORIZONTAL){
         if($coluna+$size < TAMANHO_TABULEIRO){
-            if($tabuleiro[$linha][$coluna+$size] == NO_TARGET)
+            if(no_bounds($tabuleiro, $linha, $coluna+$size))
                 if($size == 0){
                     $tabuleiro[$linha][$coluna+$size] = TARGET;
                     return $tabuleiro;
                 }
                 else if($tabuleiro = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)){
                     $tabuleiro[$linha][$coluna+$size] = TARGET;
-                    return $tabuleiro;
-                }
-        }
-        else if($coluna-$size >= 0){
-            if($tabuleiro[$linha][$coluna-$size] == NO_TARGET)
-                if($size == 0){
-                    $tabuleiro[$linha][$coluna-$size] = TARGET;
-                    return $tabuleiro;
-                }
-                else if($tabuleiro = follow($tabuleiro, $orientation, $size-1, $linha, $coluna)){
-                    $tabuleiro[$linha][$coluna-$size] = TARGET;
                     return $tabuleiro;
                 }
         }
