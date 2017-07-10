@@ -1,4 +1,6 @@
 <?php
+    header("Content-Type: text/html; charset=ISO-8859-1",true);
+    
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -7,7 +9,7 @@
     define("QTD_NAVIOS"         , 3);
     define("QTD_SUBMARINOS"     , 4);
     define("QTD_MINAS"          , 5);
-define("PARADIGMA"          , "funcional");
+    define("PARADIGMA"          , "funcional");
     
     include PARADIGMA . '/index.php';
 ?>
