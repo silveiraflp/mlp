@@ -1,4 +1,4 @@
-- funções lambda
+- fun��es lambda
 http://php.net/manual/pt_BR/functions.anonymous.php
 
 - Currying (Embarcações)

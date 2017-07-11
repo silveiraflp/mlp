@@ -17,13 +17,37 @@ function count_arrays($carry, $array){
     return $carry;
 }
 
+function drawn($tabuleiro, $linha, $coluna){
+    
+    if($linha-1 >= 0)
+        if($tabuleiro[$linha-1][$coluna] == TARGET)
+            return 0;
+
+    if($linha+1 < TAMANHO_TABULEIRO)
+        if($tabuleiro[$linha+1][$coluna] == TARGET)
+            return 0;
+
+    if($coluna-1 >= 0)
+        if($tabuleiro[$linha][$coluna-1] == TARGET)
+            return 0;
+
+    if($coluna+1 < TAMANHO_TABULEIRO)
+        if($tabuleiro[$linha][$coluna+1] == TARGET)
+            return 0;
+
+
+    return 1;
+}
+
+
 $resultado = -1;
 
 if (isset($_GET['acao']))
 {
     session_start();
 
-    $jogo = $_SESSION['jogo'];
+    $jogo = $_SESSION['jogo']['tabuleiro'];
+    $num_embarc = $_SESSION['jogo']['num_embarc'];
     
     switch ($_GET['acao'])
     {
@@ -34,14 +58,21 @@ if (isset($_GET['acao']))
             if($jogo[$linha][$coluna] == TARGET){
                 $resultado += 1;
                 $jogo[$linha][$coluna] = ALREADY_CLICKED;
+
+                if(drawn($jogo, $linha, $coluna)){
+                    $resultado += 1;
+                    $_SESSION['jogo']['num_embarc']--;
+                }
+
+                $_SESSION['jogo']['tabuleiro'] = $jogo;
             }
             
             break;
         case "verificaFim":
             
-            $resultado = array_reduce($jogo, "count_arrays");
+            $resultado = $_SESSION['jogo']['num_embarc'];
             
-            break;
+        break;
     }
 }
 

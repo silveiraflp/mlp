@@ -7,7 +7,7 @@
     define("QTD_NAVIOS"         , 3);
     define("QTD_SUBMARINOS"     , 4);
     define("QTD_MINAS"          , 5);
-define("PARADIGMA"          , "funcional");
+    define("PARADIGMA"          , "funcional");
     
     include PARADIGMA . '/index.php';
 ?>
@@ -88,18 +88,20 @@ for ($i=0; $i <= (TAMANHO_TABULEIRO + 1); $i++)
             data: { acao: 'atirar', linha: linha, coluna: coluna }
         })
         .done(function( retorno ) {
+
             if (retorno == -1) // Errou
             {
                 adicionaIcone(linha, coluna, "erro.png");
             }
-            else // Acertou embarcaï¿½ï¿½o
+            else // Acertou embarcação
             {
                 adicionaIcone(linha, coluna, "fire.gif");
                 setTimeout(function(){
                     adicionaIcone(linha, coluna, "acerto.png");
                 }, 500);
-                
-                if (retorno == 1) // Afundou embarcaï¿½ï¿½o
+                    
+
+                if (retorno == 1) // Afundou embarcação
                 {
                     verificarFim(paradigma);                    
                 }
@@ -118,7 +120,7 @@ for ($i=0; $i <= (TAMANHO_TABULEIRO + 1); $i++)
             $('#qtdEmbarcacoesEmJogo').html(qtdEmbarcacoes);
     
             if (qtdEmbarcacoes == 0)
-                alert( "Voc? afundou todas as embarca?ões! Fim de Jogo!" );
+                alert( "Você afundou todas as embarcações! Fim de Jogo!" );
         });   
     }
     

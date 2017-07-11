@@ -41,18 +41,28 @@ function iniciar_jogo($tamanho_tabuleiro){
 
     $tabuleiro = inicializar_tabuleiro($tamanho_tabuleiro);
 
-    $tabuleiro = $insert_mina($tabuleiro)(QTD_MINAS);
-    $tabuleiro = $insert_navio($tabuleiro)(QTD_NAVIOS);
-    $tabuleiro = $insert_submarino($tabuleiro)(QTD_SUBMARINOS);
+    $insert_my_minas = $insert_mina(QTD_MINAS);
+    $insert_my_navios = $insert_navio(QTD_NAVIOS);
+    $insert_my_submarinos = $insert_submarino(QTD_SUBMARINOS);
 
-    return $tabuleiro;
+    $tabuleiro = $insert_my_minas($tabuleiro);
+    $tabuleiro = $insert_my_navios($tabuleiro);
+    $tabuleiro = $insert_my_submarinos($tabuleiro);
+
+    $jogo = [
+        'tabuleiro' => $tabuleiro,
+        'num_embarc' => QTD_MINAS+QTD_NAVIOS+QTD_SUBMARINOS
+    ];
+
+    return $jogo;
 };
 
 function jogo(){
     return !isset($_SESSION['jogo']) ? $_SESSION['jogo'] = iniciar_jogo(TAMANHO_TABULEIRO) : $_SESSION['jogo'];
 };
 
-$tabuleiro = jogo();
+$tabuleiro = jogo()['tabuleiro'];
+
 // for($i = 0; $i < TAMANHO_TABULEIRO; $i++){
 //     for($j = 0; $j < TAMANHO_TABULEIRO; $j++){
 //         echo $tabuleiro[$i][$j]+ " ";
