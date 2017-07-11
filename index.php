@@ -1,9 +1,11 @@
 <?php
+    header("Content-Type: text/html; charset=ISO-8859-1",true);
+    
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     define("TAMANHO_TABULEIRO"  , 15);
-    define("TAMANHO_GRID"       , 45); // número de pixels
+    define("TAMANHO_GRID"       , 35); // número de pixels
     define("QTD_NAVIOS"         , 3);
     define("QTD_SUBMARINOS"     , 4);
     define("QTD_MINAS"          , 5);
