@@ -12,7 +12,7 @@ if (isset($_GET['acao']))
 {
     session_start();
 
-    $jogo = $_SESSION['jogo'];
+    $jogo = $_SESSION['jogo_oo'];
     
     switch ($_GET['acao'])
     {

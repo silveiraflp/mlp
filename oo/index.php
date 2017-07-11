@@ -8,16 +8,16 @@ foreach (glob("oo/modelos/*.php") as $filename)
 
 session_start();
 
-if (!isset($_SESSION['jogo']))
+if (!isset($_SESSION['jogo_oo']))
 {
     $jogo = new Jogo(TAMANHO_TABULEIRO);
     $jogo->iniciar(QTD_SUBMARINOS,QTD_NAVIOS,QTD_MINAS);
     
-    $_SESSION['jogo'] = $jogo;
+    $_SESSION['jogo_oo'] = $jogo;
 }
 else
 {
-    $jogo = $_SESSION['jogo'];
+    $jogo = $_SESSION['jogo_oo'];
 }
 
 $embarcacoes = $jogo->getTabuleiro()->getArrEmbarcacoesEmJogo();
