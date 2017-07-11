@@ -63,11 +63,13 @@ function jogo(){
 
 $tabuleiro = jogo()['tabuleiro'];
 
-// for($i = 0; $i < TAMANHO_TABULEIRO; $i++){
-//     for($j = 0; $j < TAMANHO_TABULEIRO; $j++){
-//         echo $tabuleiro[$i][$j]+ " ";
-//     }
-//     echo "<br>";
-// }
+echo "<div style='position: absolute; right: 0px; top: 50px;'>";
+ for($i = 0; $i < TAMANHO_TABULEIRO; $i++){
+     for($j = 0; $j < TAMANHO_TABULEIRO; $j++){
+         echo " " . $tabuleiro[$i][$j] . " ";
+     }
+     echo "<br>";
+ }
+echo "</div>";
 
 // die();
